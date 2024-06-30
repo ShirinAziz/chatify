@@ -1,7 +1,11 @@
+import Home from "./Home";
+
 function App() {
   return (
     <>
-      <div>hello</div>
+      <div>
+        <Home />
+      </div>
     </>
   );
 }
