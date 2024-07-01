@@ -27,12 +27,14 @@ const Home = () => {
         </div>
       </div>
 
-      {/*Section 3 */}
+      {/*Section 2 */}
       <div className="flex flex-col items-center gap-4 mt-10">
         <h1 className="text-orange-400 text-lg">Our services</h1>
-        <p className="text-4xl">We Provide Various kind of Service for you</p>
+        <p className="text-3xl md:text-4xl">
+          We Provide Various kind of Service for you
+        </p>
 
-        <div className="flex flex-col lg:flex-row gap-4 mt-8">
+        <div className="flex flex-col lg:flex-row gap-4 mt-6">
           <div className="card bg-base-100 w-50 shadow-xl">
             <div className="card-body">
               <h2 className="card-title text-red-400">Easy Connection</h2>
