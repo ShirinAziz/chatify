@@ -1,12 +1,15 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./Home";
+import { AuthContextProvider } from "./Context/AuthContext";
 
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
+      <AuthContextProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </AuthContextProvider>
     </>
   );
 }
