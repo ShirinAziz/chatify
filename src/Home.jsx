@@ -1,12 +1,11 @@
 import React from "react";
 import Img1 from "/img1.png";
 import Menu from "./Components/Menu";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
     <>
-      <Menu />
-
       <div className="p-6 lg:p-20">
         {/*Section 1 */}
         <div className="flex flex-col-reverse gap-14 lg:gap-0 lg:flex-row lg:justify-between lg:items-center">
@@ -20,10 +19,16 @@ const Home = () => {
             </p>
 
             <div className="flex flex-col mt-10 md:flex-row gap-2">
-              <button className="btn btn-primary">Sign In</button>
-              <button className="btn btn-outline btn-primary">
-                Sign Up For Free
-              </button>
+              <Link to="/login">
+                <button className="btn btn-primary w-[250px] sm:w-[150px]">
+                  Sign In
+                </button>
+              </Link>
+              <Link to="/register">
+                <button className="btn btn-outline btn-primary w-[250px] sm:w-[150px]">
+                  Sign Up For Free
+                </button>
+              </Link>
             </div>
           </div>
           <div>
