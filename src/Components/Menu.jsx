@@ -1,5 +1,6 @@
 import React from "react";
 import icon from "/icon.png";
+import { Link } from "react-router-dom";
 
 const Menu = () => {
   return (
@@ -10,7 +11,10 @@ const Menu = () => {
           Let's<span className="text-orange-400">Talk</span>
         </h1>
       </div>
-      <button className="btn btn-primary md:px-8">Get Started</button>
+      <Link to="/register">
+        {" "}
+        <button className="btn btn-primary md:px-8">Get Started</button>
+      </Link>
     </div>
   );
 };
