@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Menu from "./Menu";
 import { AuthContext } from "./AuthContext";
 import { jwtDecode } from "jwt-decode";
@@ -102,16 +102,16 @@ const Login = () => {
                   className="input input-bordered"
                   required
                 />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label>
               </div>
-              <div className="form-control mt-6">
+              <div className="form-control mt-6 gap-2">
                 <button className="btn btn-primary" type="submit">
                   Login
                 </button>
+                <Link to="/register">
+                  <button className="btn btn-primary btn-outline w-full">
+                    Sign Up
+                  </button>
+                </Link>
               </div>
               {error && <p>{error}</p>}
             </form>

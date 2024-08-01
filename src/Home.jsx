@@ -21,12 +21,12 @@ const Home = () => {
 
             <div className="flex flex-col mt-10 md:flex-row gap-2">
               <Link to="/login">
-                <button className="btn btn-primary w-[250px] sm:w-[150px]">
+                <button className="btn btn-primary w-full sm:w-[150px]">
                   Sign In
                 </button>
               </Link>
               <Link to="/register">
-                <button className="btn btn-outline btn-primary w-[250px] sm:w-[150px]">
+                <button className="btn btn-outline btn-primary w-full sm:w-[150px]">
                   Sign Up For Free
                 </button>
               </Link>

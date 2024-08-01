@@ -8,14 +8,14 @@ const Menu = () => {
       <Link to="/">
         <div className="flex items-center gap-1">
           <img src={icon} className="h-10 w-10" />
-          <h1 className="text-4xl cursor-pointer">
+          <h1 className="text-3xl cursor-pointer">
             Let's<span className="text-orange-400">Talk</span>
           </h1>
         </div>
       </Link>
-      {/*<Link to="/register">
+      <Link to="/login">
         <button className="btn btn-primary md:px-8">Get Started</button>
-      </Link> */}
+      </Link>
     </div>
   );
 };
