@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <>
+      <Menu />
       <div className="p-6 lg:p-20">
         {/*Section 1 */}
         <div className="flex flex-col-reverse gap-14 lg:gap-0 lg:flex-row lg:justify-between lg:items-center">

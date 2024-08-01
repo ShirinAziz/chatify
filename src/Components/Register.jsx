@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Menu from "./Menu";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -58,6 +59,7 @@ const Register = () => {
 
   return (
     <div>
+      <Menu />
       <div className="hero  h-[600px]">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="card bg-base-100 w-full  sm:w-[400px] shrink-0 shadow-2xl">
