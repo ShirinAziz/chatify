@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Menu from "./Menu";
+import { AuthContext } from "./AuthContext";
+import { jwtDecode } from "jwt-decode";
 
 const Login = () => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [csrfToken, setCsrfToken] = useState("");
   const navigate = useNavigate();
+  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
 
   useEffect(() => {
     // Kontrollera om användaren redan är inloggad
@@ -18,7 +20,9 @@ const Login = () => {
       setIsLoggedIn(true);
       navigate("/chat"); // Om användaren redan är inloggad, omdirigera till chattsidan
     }
+  }, [setIsLoggedIn]);
 
+  useEffect(() => {
     fetch("https://chatify-api.up.railway.app/csrf", {
       method: "PATCH",
     })
@@ -42,12 +46,14 @@ const Login = () => {
       );
 
       if (response.status === 200) {
-        const { token, userId, userName, userAvatar } = response.data;
+        const { token } = response.data;
+        console.log(response.data);
         // Spara token och användarinformation i localStorage eller en cookie
+        const user = jwtDecode(token);
+        console.log(user);
         localStorage.setItem("authToken", token);
-        localStorage.setItem("userId", userId);
-        localStorage.setItem("userName", userName);
-        localStorage.setItem("userAvatar", userAvatar);
+        localStorage.setItem("user", JSON.stringify(user));
+
         setIsLoggedIn(true); // Uppdatera tillståndet för att visa att användaren är inloggad
         navigate("/chat");
       } else {
