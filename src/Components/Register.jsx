@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -9,6 +10,7 @@ const Register = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [csrfToken, setCsrfToken] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("https://chatify-api.up.railway.app/csrf", {
@@ -20,6 +22,7 @@ const Register = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setError("");
 
     if (password !== confirmPassword) {
       setError("Passwords do not match");
@@ -40,11 +43,16 @@ const Register = () => {
 
       if (response.status === 201) {
         setSuccess(true);
-      } else {
-        setError("Registration failed, please try again.");
+        setTimeout(() => {
+          navigate("/login"); // Redirect till inloggningssidan vid lyckad registrering
+        }, 1500);
       }
     } catch (error) {
-      setError("An error occurred. Please try again.");
+      if (error.response && error.response.data) {
+        setError(error.response.data.error); // Visar felmeddelandet från API:et
+      } else {
+        setError("An error occurred. Please try again.");
+      }
     }
   };
 
