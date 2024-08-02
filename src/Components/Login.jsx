@@ -10,6 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [csrfToken, setCsrfToken] = useState("");
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const { isLoggedIn, setIsLoggedIn, setUser } = useContext(AuthContext);
 
@@ -20,9 +21,9 @@ const Login = () => {
       const user = JSON.parse(localStorage.getItem("user"));
       setUser(user);
       setIsLoggedIn(true);
-
       navigate("/chat"); // Om användaren redan är inloggad, omdirigera till chattsidan
     }
+    setLoading(false);
   }, [setIsLoggedIn, setUser, navigate]);
 
   useEffect(() => {
@@ -73,6 +74,9 @@ const Login = () => {
       }
     }
   };
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div>
