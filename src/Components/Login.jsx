@@ -11,16 +11,19 @@ const Login = () => {
   const [error, setError] = useState("");
   const [csrfToken, setCsrfToken] = useState("");
   const navigate = useNavigate();
-  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, setIsLoggedIn, setUser } = useContext(AuthContext);
 
   useEffect(() => {
     // Kontrollera om användaren redan är inloggad
     const token = localStorage.getItem("authToken");
     if (token) {
+      const user = JSON.parse(localStorage.getItem("user"));
+      setUser(user);
       setIsLoggedIn(true);
+
       navigate("/chat"); // Om användaren redan är inloggad, omdirigera till chattsidan
     }
-  }, [setIsLoggedIn]);
+  }, [setIsLoggedIn, setUser, navigate]);
 
   useEffect(() => {
     fetch("https://chatify-api.up.railway.app/csrf", {
@@ -29,7 +32,7 @@ const Login = () => {
       .then((res) => res.json())
       .then((data) => setCsrfToken(data.csrfToken))
       .catch(() => setError("Failed to fetch CSRF token"));
-  }, [navigate]);
+  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -55,6 +58,7 @@ const Login = () => {
         localStorage.setItem("user", JSON.stringify(user));
 
         setIsLoggedIn(true); // Uppdatera tillståndet för att visa att användaren är inloggad
+        setUser(user);
         navigate("/chat");
       } else {
         setError("Invalid credentials. Please try again.");
