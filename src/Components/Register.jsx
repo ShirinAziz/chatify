@@ -8,6 +8,7 @@ const Register = () => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [avatar, setAvatar] = useState(null);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [csrfToken, setCsrfToken] = useState("");

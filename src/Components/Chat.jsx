@@ -1,11 +1,15 @@
 import React from "react";
 import SideNav from "./SideNav";
+import Conversations from "./Conversations";
 
 const Chat = () => {
   return (
     <div>
       <SideNav />
-      Chat
+
+      <div className="">
+        <Conversations />
+      </div>
     </div>
   );
 };
