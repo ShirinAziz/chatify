@@ -10,8 +10,9 @@ const ChatBubble = ({ avatar, text, sender, handleRemove, messageId }) => {
       <div
         className={` ${!sender && "hidden"}`}
         onClick={() => handleRemove(messageId)}
+        style={{ cursor: "pointer" }}
       >
-        X
+        &nbsp; X
       </div>
       <div className="avatar h-8 w-8">
         <div className="ring-offset-base-100 ring-primary w-8 rounded-full ring ring-offset-2">

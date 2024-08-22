@@ -7,7 +7,7 @@ const Chat = () => {
     <div>
       <SideNav />
 
-      <div className="">
+      <div className="flex flex-col items-center h-screen bg-gray-300">
         <Conversations />
       </div>
     </div>
