@@ -8,7 +8,7 @@ const Register = () => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [avatar, setAvatar] = useState(null);
+  const [avatar, setAvatar] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [csrfToken, setCsrfToken] = useState("");
@@ -39,6 +39,7 @@ const Register = () => {
           email,
           username,
           password,
+          avatar,
           csrfToken,
         }
       );
@@ -116,6 +117,20 @@ const Register = () => {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   placeholder="password"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Avatar URL</span>
+                </label>
+                <input
+                  type="text"
+                  value={avatar}
+                  onChange={(e) => setAvatar(e.target.value)}
+                  placeholder="https://example.com/yur-avatar.png"
                   className="input input-bordered"
                   required
                 />

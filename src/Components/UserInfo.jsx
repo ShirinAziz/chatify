@@ -8,8 +8,8 @@ const UserInfo = () => {
   }
 
   return (
-    <div className="user-info">
-      <img src={user.avatar} />
+    <div className="user-info flex gap-2 items-center">
+      <img src={user.avatar} className="rounded-full h-[40px] w-[40px]" />
       <p>Welcome {user.user}</p>
     </div>
   );
